@@ -12,9 +12,16 @@ class Project extends Model
     protected $fillable = [
         'title',
         'description',
-        'start+dade',
+        'start_date',
         'end_date',
         'client_id',
 
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'client_id');
+    }
+    public function tasks(){
+        return $this->hasMany(Task::class, 'project_id');
+    }
 }
